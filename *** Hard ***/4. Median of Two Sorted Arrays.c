@@ -1,6 +1,7 @@
 #define MIN(a,b) (((a)<(b))?(a):(b))
 #define MAX(a,b) (((a)>(b))?(a):(b))
 
+// O(log(n)) time complexity
 double findMedianSortedArrays(int* nums1, int nums1Size, int* nums2, int nums2Size) {
     int n = nums1Size + nums2Size, half = n / 2, li = 0, ri = nums2Size;
 
