@@ -10,6 +10,7 @@ bool isMatch(char *s, char *p) {
     } else {
         if (s[0] == '\0') return p[1] == '*' ? isMatch(s, p + 2) : false;
         if (p[1] == '*') {
+            if (p[2] == '.' && p[3] == '*') return isMatch(s, p + 2); 
             int idx = 0;
             while (s[idx++] != '\0') if (isMatch(s + idx, p + 2)) return true;
             return isMatch(s, p + 2);
