@@ -9,17 +9,11 @@ bool isMatch(char *s, char *p) {
         for (int j = m - 1; j >= 0; j --) {
             if (p[j] == '*') dp[i][j] = false;
             else if (p[j] == '.') {
-                if (j < m - 1 && p[j + 1] == '*') {
-                    for (k = i; k < n; k ++) dp[i][j] = fmax(dp[i][j], dp[k][j + 2]);
-                    dp[i][j] = fmax(dp[i][j], dp[k][j + 2]);
-                }
+                if (j < m - 1 && p[j + 1] == '*') { k = i; while (k <= n) dp[i][j] = fmax(dp[i][j], dp[k++][j + 2]); }
                 else dp[i][j] = dp[i + 1][j + 1];
             } else {
                 if (j < m - 1 && p[j + 1] == '*') {
-                    if (p[j] == s[i]) {
-                        for (k = i; s[k] == p[j]; k ++) dp[i][j] = fmax(dp[i][j], dp[k][j + 2]);
-                        dp[i][j] = fmax(dp[i][j], dp[k][j + 2]);
-                    }
+                    if (p[j] == s[i]) { dp[i][j] = fmax(dp[i][j], dp[i][j + 2]); k = i; while (s[k] == p[j]) dp[i][j] = fmax(dp[i][j], dp[++k][j + 2]); }
                     else dp[i][j] = dp[i][j + 2];
                 } else if (s[i] == p[j]) dp[i][j] = dp[i + 1][j + 1];
             }
