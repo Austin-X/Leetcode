@@ -7,7 +7,7 @@ public:
 
         while (!q.empty()) {
             int val = q.front(); q.pop();
-            for (int i = 0; i < rooms[val].size(); i ++) if (!vis[rooms[val][i]]) { vis[rooms[val][i]] = true; q.push(rooms[val][i]); }
+            for (int x: rooms[val]) if (!vis[x]) { vis[x] = true; q.push(x); }
         }
         return count(vis, vis + n, true) == n;
     }
