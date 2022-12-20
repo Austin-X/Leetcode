@@ -9,7 +9,6 @@ public:
             int val = q.front(); q.pop();
             for (int i = 0; i < rooms[val].size(); i ++) if (!vis[rooms[val][i]]) { vis[rooms[val][i]] = true; q.push(rooms[val][i]); }
         }
-        for (int i = 0; i < n; i ++) if (!vis[i]) return false;
-        return true;
+        return count(vis, vis + n, true) == n;
     }
 };
