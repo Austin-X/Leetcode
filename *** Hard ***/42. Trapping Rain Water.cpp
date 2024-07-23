@@ -12,10 +12,7 @@ public:
                     h_idx = p.first;
                 }
             }
-            if (st.empty() || h < st.top().second) {
-                st.push({h_idx, h});
-                continue;
-            }
+            if (st.empty() || h < st.top().second) st.push({h_idx, h});
         }
         return ans;
     }
